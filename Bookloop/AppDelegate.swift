@@ -7,15 +7,58 @@
 //
 
 import UIKit
+import Parse
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // Parse configuration
+        
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "0000.bookloop"
+            $0.server = "http://localhost:1337/parse"
+        }
+        Parse.initializeWithConfiguration(configuration)
+        
+        // Initial view setup
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        if PFUser.currentUser() == nil {
+            let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+            let initialViewController = loginStoryboard.instantiateInitialViewController()
+            self.window!.rootViewController = initialViewController;
+        } else {
+            let menuStoryboard = UIStoryboard(name: "Menu", bundle: nil)
+            let initialViewController = menuStoryboard.instantiateInitialViewController()
+            self.window!.rootViewController = initialViewController;
+        }
+        
+        self.window!.makeKeyAndVisible()
+        
+        /*
+        PFCloud.callFunctionInBackground("textbookMatchingISBN", withParameters: ["isbn":"0078024269"]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print(response as! PFObject)
+            }
+        }
+        
+        
+        let trade = PFObject(className: "TradeGroup")
+        trade["users"] = [(PFUser.currentUser()!),(PFObject(withoutDataWithClassName: "_User", objectId: "jP57Xnd6aP"))]
+         do { try trade.save() }
+         catch { print("ERROR") }
+        */
+        
+        
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
+        
         return true
     }
 

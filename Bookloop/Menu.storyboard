@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Hxu-My-uwX">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="iR8-kw-H9k">
+            <objects>
+                <tabBarController id="Hxu-My-uwX" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="hfG-gf-ylD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="JSK-qJ-J3W" kind="relationship" relationship="viewControllers" id="dr7-AG-Je9"/>
+                        <segue destination="J2j-FO-hlV" kind="relationship" relationship="viewControllers" id="dT6-ib-If7"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1vP-Xs-cMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-411" y="-85"/>
+        </scene>
+        <!--TradesNavigationController-->
+        <scene sceneID="JUC-Ae-yfH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Trades" referencedIdentifier="TradesNavigationController" id="JSK-qJ-J3W" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="wVZ-D3-yVb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="34A-RS-KzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143.5" y="-392"/>
+        </scene>
+        <!--MyBooksNavigationController-->
+        <scene sceneID="mmW-wp-iIX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BookList" referencedIdentifier="MyBooksNavigationController" id="J2j-FO-hlV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="kr4-3r-ApF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JIH-Uw-kA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143.5" y="-208"/>
+        </scene>
+    </scenes>
+</document>

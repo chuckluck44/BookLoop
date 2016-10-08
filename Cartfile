@@ -1,0 +1,7 @@
+github "ParsePlatform/Parse-SDK-iOS-OSX"
+github "ReactiveCocoa/ReactiveCocoa"
+github "RACCommunity/Rex"
+github "antitypical/Result"
+github "SVProgressHUD/SVProgressHUD"
+github "badoo/Chatto"
+github "dzenbot/DZNEmptyDataSet"

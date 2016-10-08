@@ -7,6 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091241C71D756AE600155383 /* SVProgressHUD+AlertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091241C61D756AE600155383 /* SVProgressHUD+AlertTypes.swift */; };
+		092FF1511D88C2C800F673E8 /* TradeDetailHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FF1501D88C2C800F673E8 /* TradeDetailHeaderTableViewCell.swift */; };
+		092FF1551D88E60700F673E8 /* UITableView+ReloadRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FF1541D88E60700F673E8 /* UITableView+ReloadRows.swift */; };
+		09368A051D8F4468002F05D8 /* TradeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A031D8F4468002F05D8 /* TradeDetailViewController.swift */; };
+		09368A061D8F4468002F05D8 /* TradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A041D8F4468002F05D8 /* TradesTableViewController.swift */; };
+		09368A091D8F4499002F05D8 /* ISBNLookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A081D8F4499002F05D8 /* ISBNLookupTableViewController.swift */; };
+		09368A0B1D8F46E6002F05D8 /* MyBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A0A1D8F46E6002F05D8 /* MyBooksViewController.swift */; };
+		09368A0D1D8F4706002F05D8 /* TextbookResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A0C1D8F4706002F05D8 /* TextbookResultTableViewController.swift */; };
+		09368A111D8F4992002F05D8 /* TradeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A0F1D8F4992002F05D8 /* TradeDetailViewModel.swift */; };
+		09368A121D8F4992002F05D8 /* TradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A101D8F4992002F05D8 /* TradesViewModel.swift */; };
+		09368A151D8F49D6002F05D8 /* MyBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A141D8F49D6002F05D8 /* MyBooksViewModel.swift */; };
+		09368A171D8F6A17002F05D8 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09368A161D8F6A17002F05D8 /* DZNEmptyDataSet.framework */; };
+		09368A191D8F986D002F05D8 /* ISBNLookupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A181D8F986D002F05D8 /* ISBNLookupViewModel.swift */; };
+		09368A1B1D8F987E002F05D8 /* TextbookResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A1A1D8F987E002F05D8 /* TextbookResultViewModel.swift */; };
+		09368A1D1D907AEF002F05D8 /* TextbookTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A1C1D907AEF002F05D8 /* TextbookTableViewCellModel.swift */; };
+		09368A1F1D907D6A002F05D8 /* RACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A1E1D907D6A002F05D8 /* RACUtil.swift */; };
+		09368A211D90CBEE002F05D8 /* TextbookConditionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A201D90CBEE002F05D8 /* TextbookConditionTableViewController.swift */; };
+		09368A231D90CC74002F05D8 /* TextbookConditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A221D90CC74002F05D8 /* TextbookConditionViewModel.swift */; };
+		09368A271D91F800002F05D8 /* StoreRequestStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A261D91F800002F05D8 /* StoreRequestStatusType.swift */; };
+		09368A291D920F1C002F05D8 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09368A281D920F1C002F05D8 /* ButtonTableViewCell.xib */; };
+		09368A2B1D920F78002F05D8 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368A2A1D920F78002F05D8 /* ButtonTableViewCell.swift */; };
+		09807BB91D8BAD21004B513B /* TextbookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09807BB81D8BAD21004B513B /* TextbookTableViewCell.xib */; };
+		09807BBB1D8BBE63004B513B /* Messaging.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09807BBA1D8BBE63004B513B /* Messaging.storyboard */; };
+		09B75FB21D76C83F00958654 /* BookList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09B75FB11D76C83F00958654 /* BookList.storyboard */; };
+		09B75FB41D777F9600958654 /* TradeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B75FB31D777F9600958654 /* TradeGroup.swift */; };
+		09B75FB61D7780AD00958654 /* TextbookMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B75FB51D7780AD00958654 /* TextbookMatch.swift */; };
+		09B75FB81D7780FB00958654 /* TextbookOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B75FB71D7780FB00958654 /* TextbookOffer.swift */; };
+		09B75FBA1D77810400958654 /* TextbookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B75FB91D77810400958654 /* TextbookRequest.swift */; };
+		09B75FBC1D7781B200958654 /* Textbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B75FBB1D7781B200958654 /* Textbook.swift */; };
+		09B75FC81D77C19900958654 /* TradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B75FC71D77C19900958654 /* TradeTableViewCell.swift */; };
+		09B75FCA1D77CD9A00958654 /* BalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B75FC91D77CD9A00958654 /* BalanceTableViewCell.swift */; };
+		09B75FCE1D77F97600958654 /* TradeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B75FCD1D77F97600958654 /* TradeTableViewCell.xib */; };
+		09BA71481D82825F00764944 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA71471D82825F00764944 /* DateFormatHelper.swift */; };
+		09BA714A1D833E8100764944 /* XMSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA71491D833E8100764944 /* XMSegmentedControl.swift */; };
+		09BA71521D83423E00764944 /* TextbookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA71511D83423E00764944 /* TextbookTableViewCell.swift */; };
+		09BF25F51D74DF6A00B24572 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF25F41D74DF6900B24572 /* Bolts.framework */; };
+		09BF26001D75319200B24572 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09BF25FF1D75319200B24572 /* Menu.storyboard */; };
+		09BF26021D75333A00B24572 /* Trades.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09BF26011D75333A00B24572 /* Trades.storyboard */; };
+		09BF26041D75371C00B24572 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF26031D75371C00B24572 /* SVProgressHUD.framework */; };
 		09FF07421D6F7675003634AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07411D6F7675003634AD /* AppDelegate.swift */; };
 		09FF07441D6F7675003634AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07431D6F7675003634AD /* ViewController.swift */; };
 		09FF07471D6F7675003634AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FF07451D6F7675003634AD /* Main.storyboard */; };
@@ -14,6 +53,18 @@
 		09FF074C1D6F7675003634AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FF074A1D6F7675003634AD /* LaunchScreen.storyboard */; };
 		09FF07571D6F7675003634AD /* BookloopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07561D6F7675003634AD /* BookloopTests.swift */; };
 		09FF07621D6F7675003634AD /* BookloopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07611D6F7675003634AD /* BookloopUITests.swift */; };
+		09FF07711D6F79DE003634AD /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FF076F1D6F79DE003634AD /* ReactiveCocoa.framework */; };
+		09FF07721D6F79DE003634AD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FF07701D6F79DE003634AD /* Result.framework */; };
+		09FF07781D6F7B1D003634AD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07751D6F7B1D003634AD /* LoginViewController.swift */; };
+		09FF07791D6F7B1D003634AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07761D6F7B1D003634AD /* SignUpViewController.swift */; };
+		09FF077C1D6F7B4B003634AD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FF077A1D6F7B4B003634AD /* Login.storyboard */; };
+		09FF07801D6F9D7D003634AD /* Rex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FF077F1D6F9D7D003634AD /* Rex.framework */; };
+		09FF07821D722697003634AD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FF07811D722697003634AD /* Parse.framework */; };
+		09FF07841D7229C4003634AD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07831D7229C4003634AD /* User.swift */; };
+		09FF07891D72A235003634AD /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07881D72A235003634AD /* Networking.swift */; };
+		09FF078B1D74250C003634AD /* RemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF078A1D74250C003634AD /* RemoteStore.swift */; };
+		09FF07911D74D374003634AD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF078F1D74D374003634AD /* LoginViewModel.swift */; };
+		09FF07921D74D374003634AD /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FF07901D74D374003634AD /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +85,47 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		091241C61D756AE600155383 /* SVProgressHUD+AlertTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+AlertTypes.swift"; sourceTree = "<group>"; };
+		092FF1501D88C2C800F673E8 /* TradeDetailHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeDetailHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		092FF1541D88E60700F673E8 /* UITableView+ReloadRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+ReloadRows.swift"; sourceTree = "<group>"; };
+		09368A031D8F4468002F05D8 /* TradeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeDetailViewController.swift; sourceTree = "<group>"; };
+		09368A041D8F4468002F05D8 /* TradesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradesTableViewController.swift; sourceTree = "<group>"; };
+		09368A081D8F4499002F05D8 /* ISBNLookupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISBNLookupTableViewController.swift; sourceTree = "<group>"; };
+		09368A0A1D8F46E6002F05D8 /* MyBooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBooksViewController.swift; sourceTree = "<group>"; };
+		09368A0C1D8F4706002F05D8 /* TextbookResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookResultTableViewController.swift; sourceTree = "<group>"; };
+		09368A0F1D8F4992002F05D8 /* TradeDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeDetailViewModel.swift; sourceTree = "<group>"; };
+		09368A101D8F4992002F05D8 /* TradesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradesViewModel.swift; sourceTree = "<group>"; };
+		09368A141D8F49D6002F05D8 /* MyBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBooksViewModel.swift; sourceTree = "<group>"; };
+		09368A161D8F6A17002F05D8 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
+		09368A181D8F986D002F05D8 /* ISBNLookupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISBNLookupViewModel.swift; sourceTree = "<group>"; };
+		09368A1A1D8F987E002F05D8 /* TextbookResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookResultViewModel.swift; sourceTree = "<group>"; };
+		09368A1C1D907AEF002F05D8 /* TextbookTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookTableViewCellModel.swift; sourceTree = "<group>"; };
+		09368A1E1D907D6A002F05D8 /* RACUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtil.swift; sourceTree = "<group>"; };
+		09368A201D90CBEE002F05D8 /* TextbookConditionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookConditionTableViewController.swift; sourceTree = "<group>"; };
+		09368A221D90CC74002F05D8 /* TextbookConditionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookConditionViewModel.swift; sourceTree = "<group>"; };
+		09368A261D91F800002F05D8 /* StoreRequestStatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRequestStatusType.swift; sourceTree = "<group>"; };
+		09368A281D920F1C002F05D8 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
+		09368A2A1D920F78002F05D8 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		09807BB81D8BAD21004B513B /* TextbookTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextbookTableViewCell.xib; sourceTree = "<group>"; };
+		09807BBA1D8BBE63004B513B /* Messaging.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messaging.storyboard; sourceTree = "<group>"; };
+		09A198F41D8C918F00AB544B /* Chatto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chatto.framework; path = Carthage/Build/iOS/Chatto.framework; sourceTree = "<group>"; };
+		09A198F61D8C919600AB544B /* ChattoAdditions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChattoAdditions.framework; path = Carthage/Build/iOS/ChattoAdditions.framework; sourceTree = "<group>"; };
+		09B75FB11D76C83F00958654 /* BookList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookList.storyboard; sourceTree = "<group>"; };
+		09B75FB31D777F9600958654 /* TradeGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeGroup.swift; sourceTree = "<group>"; };
+		09B75FB51D7780AD00958654 /* TextbookMatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookMatch.swift; sourceTree = "<group>"; };
+		09B75FB71D7780FB00958654 /* TextbookOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookOffer.swift; sourceTree = "<group>"; };
+		09B75FB91D77810400958654 /* TextbookRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookRequest.swift; sourceTree = "<group>"; };
+		09B75FBB1D7781B200958654 /* Textbook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Textbook.swift; sourceTree = "<group>"; };
+		09B75FC71D77C19900958654 /* TradeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeTableViewCell.swift; sourceTree = "<group>"; };
+		09B75FC91D77CD9A00958654 /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceTableViewCell.swift; sourceTree = "<group>"; };
+		09B75FCD1D77F97600958654 /* TradeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradeTableViewCell.xib; sourceTree = "<group>"; };
+		09BA71471D82825F00764944 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
+		09BA71491D833E8100764944 /* XMSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMSegmentedControl.swift; sourceTree = "<group>"; };
+		09BA71511D83423E00764944 /* TextbookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextbookTableViewCell.swift; sourceTree = "<group>"; };
+		09BF25F41D74DF6900B24572 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
+		09BF25FF1D75319200B24572 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		09BF26011D75333A00B24572 /* Trades.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trades.storyboard; sourceTree = "<group>"; };
+		09BF26031D75371C00B24572 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		09FF073E1D6F7675003634AD /* Bookloop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookloop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FF07411D6F7675003634AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09FF07431D6F7675003634AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +139,18 @@
 		09FF075D1D6F7675003634AD /* BookloopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookloopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FF07611D6F7675003634AD /* BookloopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookloopUITests.swift; sourceTree = "<group>"; };
 		09FF07631D6F7675003634AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09FF076F1D6F79DE003634AD /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		09FF07701D6F79DE003634AD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		09FF07751D6F7B1D003634AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		09FF07761D6F7B1D003634AD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		09FF077B1D6F7B4B003634AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		09FF077F1D6F9D7D003634AD /* Rex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rex.framework; path = Carthage/Build/iOS/Rex.framework; sourceTree = "<group>"; };
+		09FF07811D722697003634AD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
+		09FF07831D7229C4003634AD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		09FF07881D72A235003634AD /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		09FF078A1D74250C003634AD /* RemoteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteStore.swift; sourceTree = "<group>"; };
+		09FF078F1D74D374003634AD /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		09FF07901D74D374003634AD /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +158,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09368A171D8F6A17002F05D8 /* DZNEmptyDataSet.framework in Frameworks */,
+				09BF25F51D74DF6A00B24572 /* Bolts.framework in Frameworks */,
+				09FF07821D722697003634AD /* Parse.framework in Frameworks */,
+				09FF07711D6F79DE003634AD /* ReactiveCocoa.framework in Frameworks */,
+				09FF07721D6F79DE003634AD /* Result.framework in Frameworks */,
+				09FF07801D6F9D7D003634AD /* Rex.framework in Frameworks */,
+				09BF26041D75371C00B24572 /* SVProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,9 +185,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09368A021D8F4468002F05D8 /* Trades */ = {
+			isa = PBXGroup;
+			children = (
+				09368A031D8F4468002F05D8 /* TradeDetailViewController.swift */,
+				09368A041D8F4468002F05D8 /* TradesTableViewController.swift */,
+			);
+			path = Trades;
+			sourceTree = "<group>";
+		};
+		09368A071D8F4473002F05D8 /* BookList */ = {
+			isa = PBXGroup;
+			children = (
+				09368A0A1D8F46E6002F05D8 /* MyBooksViewController.swift */,
+				09368A081D8F4499002F05D8 /* ISBNLookupTableViewController.swift */,
+				09368A0C1D8F4706002F05D8 /* TextbookResultTableViewController.swift */,
+				09368A201D90CBEE002F05D8 /* TextbookConditionTableViewController.swift */,
+			);
+			path = BookList;
+			sourceTree = "<group>";
+		};
+		09368A0E1D8F4992002F05D8 /* Trades */ = {
+			isa = PBXGroup;
+			children = (
+				09368A0F1D8F4992002F05D8 /* TradeDetailViewModel.swift */,
+				09368A101D8F4992002F05D8 /* TradesViewModel.swift */,
+			);
+			path = Trades;
+			sourceTree = "<group>";
+		};
+		09368A131D8F49A8002F05D8 /* MyBooks */ = {
+			isa = PBXGroup;
+			children = (
+				09368A141D8F49D6002F05D8 /* MyBooksViewModel.swift */,
+				09368A181D8F986D002F05D8 /* ISBNLookupViewModel.swift */,
+				09368A1A1D8F987E002F05D8 /* TextbookResultViewModel.swift */,
+				09368A221D90CC74002F05D8 /* TextbookConditionViewModel.swift */,
+			);
+			name = MyBooks;
+			path = Bookloop/Controllers/MyBooks;
+			sourceTree = SOURCE_ROOT;
+		};
+		09BA71461D82810700764944 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				09BA71471D82825F00764944 /* DateFormatHelper.swift */,
+				092FF1541D88E60700F673E8 /* UITableView+ReloadRows.swift */,
+				09368A1E1D907D6A002F05D8 /* RACUtil.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		09BF25FA1D75006300B24572 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09B75FC71D77C19900958654 /* TradeTableViewCell.swift */,
+				09B75FC91D77CD9A00958654 /* BalanceTableViewCell.swift */,
+				09B75FCD1D77F97600958654 /* TradeTableViewCell.xib */,
+				09368A281D920F1C002F05D8 /* ButtonTableViewCell.xib */,
+				09368A2A1D920F78002F05D8 /* ButtonTableViewCell.swift */,
+				09807BB81D8BAD21004B513B /* TextbookTableViewCell.xib */,
+				09BA71511D83423E00764944 /* TextbookTableViewCell.swift */,
+				09BA71491D833E8100764944 /* XMSegmentedControl.swift */,
+				092FF1501D88C2C800F673E8 /* TradeDetailHeaderTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		09FF07351D6F7675003634AD = {
 			isa = PBXGroup;
 			children = (
+				09368A161D8F6A17002F05D8 /* DZNEmptyDataSet.framework */,
+				09A198F61D8C919600AB544B /* ChattoAdditions.framework */,
+				09A198F41D8C918F00AB544B /* Chatto.framework */,
+				09BF26031D75371C00B24572 /* SVProgressHUD.framework */,
+				09BF25F41D74DF6900B24572 /* Bolts.framework */,
+				09FF07811D722697003634AD /* Parse.framework */,
+				09FF077F1D6F9D7D003634AD /* Rex.framework */,
+				09FF076F1D6F79DE003634AD /* ReactiveCocoa.framework */,
+				09FF07701D6F79DE003634AD /* Result.framework */,
 				09FF07401D6F7675003634AD /* Bookloop */,
 				09FF07551D6F7675003634AD /* BookloopTests */,
 				09FF07601D6F7675003634AD /* BookloopUITests */,
@@ -99,9 +286,21 @@
 			children = (
 				09FF07411D6F7675003634AD /* AppDelegate.swift */,
 				09FF07431D6F7675003634AD /* ViewController.swift */,
-				09FF07451D6F7675003634AD /* Main.storyboard */,
+				091241C61D756AE600155383 /* SVProgressHUD+AlertTypes.swift */,
+				09BA71461D82810700764944 /* Helpers */,
+				09BF25FA1D75006300B24572 /* Views */,
+				09FF078E1D74D374003634AD /* ViewModels */,
+				09FF07741D6F7B1D003634AD /* Controllers */,
+				09FF07851D727C83003634AD /* Library */,
+				09FF07771D6F7B1D003634AD /* Models */,
 				09FF07481D6F7675003634AD /* Assets.xcassets */,
+				09FF07451D6F7675003634AD /* Main.storyboard */,
 				09FF074A1D6F7675003634AD /* LaunchScreen.storyboard */,
+				09FF077A1D6F7B4B003634AD /* Login.storyboard */,
+				09BF25FF1D75319200B24572 /* Menu.storyboard */,
+				09B75FB11D76C83F00958654 /* BookList.storyboard */,
+				09807BBA1D8BBE63004B513B /* Messaging.storyboard */,
+				09BF26011D75333A00B24572 /* Trades.storyboard */,
 				09FF074D1D6F7675003634AD /* Info.plist */,
 			);
 			path = Bookloop;
@@ -125,6 +324,53 @@
 			path = BookloopUITests;
 			sourceTree = "<group>";
 		};
+		09FF07741D6F7B1D003634AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				09FF07751D6F7B1D003634AD /* LoginViewController.swift */,
+				09FF07761D6F7B1D003634AD /* SignUpViewController.swift */,
+				09368A071D8F4473002F05D8 /* BookList */,
+				09368A021D8F4468002F05D8 /* Trades */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		09FF07771D6F7B1D003634AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09FF07831D7229C4003634AD /* User.swift */,
+				09B75FB31D777F9600958654 /* TradeGroup.swift */,
+				09B75FB51D7780AD00958654 /* TextbookMatch.swift */,
+				09B75FB71D7780FB00958654 /* TextbookOffer.swift */,
+				09B75FB91D77810400958654 /* TextbookRequest.swift */,
+				09B75FBB1D7781B200958654 /* Textbook.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		09FF07851D727C83003634AD /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				09FF07881D72A235003634AD /* Networking.swift */,
+				09FF078A1D74250C003634AD /* RemoteStore.swift */,
+				09368A261D91F800002F05D8 /* StoreRequestStatusType.swift */,
+			);
+			name = Library;
+			path = Bookloop/Library;
+			sourceTree = SOURCE_ROOT;
+		};
+		09FF078E1D74D374003634AD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				09FF078F1D74D374003634AD /* LoginViewModel.swift */,
+				09FF07901D74D374003634AD /* SignUpViewModel.swift */,
+				09368A131D8F49A8002F05D8 /* MyBooks */,
+				09368A0E1D8F4992002F05D8 /* Trades */,
+				09368A1C1D907AEF002F05D8 /* TextbookTableViewCellModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +381,7 @@
 				09FF073A1D6F7675003634AD /* Sources */,
 				09FF073B1D6F7675003634AD /* Frameworks */,
 				09FF073C1D6F7675003634AD /* Resources */,
+				09FF07731D6F7A32003634AD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -229,9 +476,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09BF26001D75319200B24572 /* Menu.storyboard in Resources */,
+				09807BB91D8BAD21004B513B /* TextbookTableViewCell.xib in Resources */,
+				09BF26021D75333A00B24572 /* Trades.storyboard in Resources */,
+				09B75FCE1D77F97600958654 /* TradeTableViewCell.xib in Resources */,
+				09B75FB21D76C83F00958654 /* BookList.storyboard in Resources */,
+				09FF077C1D6F7B4B003634AD /* Login.storyboard in Resources */,
 				09FF074C1D6F7675003634AD /* LaunchScreen.storyboard in Resources */,
 				09FF07491D6F7675003634AD /* Assets.xcassets in Resources */,
+				09368A291D920F1C002F05D8 /* ButtonTableViewCell.xib in Resources */,
 				09FF07471D6F7675003634AD /* Main.storyboard in Resources */,
+				09807BBB1D8BBE63004B513B /* Messaging.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +506,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09FF07731D6F7A32003634AD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Rex.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Parse.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
+				"$(SRCROOT)//Carthage/Build/iOS/DZNEmptyDataSet.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		09FF073A1D6F7675003634AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FF07781D6F7B1D003634AD /* LoginViewController.swift in Sources */,
+				09FF07891D72A235003634AD /* Networking.swift in Sources */,
+				09BA71481D82825F00764944 /* DateFormatHelper.swift in Sources */,
+				09368A121D8F4992002F05D8 /* TradesViewModel.swift in Sources */,
+				09B75FBC1D7781B200958654 /* Textbook.swift in Sources */,
 				09FF07441D6F7675003634AD /* ViewController.swift in Sources */,
+				09368A051D8F4468002F05D8 /* TradeDetailViewController.swift in Sources */,
+				09368A111D8F4992002F05D8 /* TradeDetailViewModel.swift in Sources */,
+				09B75FCA1D77CD9A00958654 /* BalanceTableViewCell.swift in Sources */,
+				09368A151D8F49D6002F05D8 /* MyBooksViewModel.swift in Sources */,
+				09BA71521D83423E00764944 /* TextbookTableViewCell.swift in Sources */,
+				09368A2B1D920F78002F05D8 /* ButtonTableViewCell.swift in Sources */,
+				09368A211D90CBEE002F05D8 /* TextbookConditionTableViewController.swift in Sources */,
+				092FF1551D88E60700F673E8 /* UITableView+ReloadRows.swift in Sources */,
+				091241C71D756AE600155383 /* SVProgressHUD+AlertTypes.swift in Sources */,
+				09FF07841D7229C4003634AD /* User.swift in Sources */,
+				09FF07791D6F7B1D003634AD /* SignUpViewController.swift in Sources */,
 				09FF07421D6F7675003634AD /* AppDelegate.swift in Sources */,
+				09B75FB61D7780AD00958654 /* TextbookMatch.swift in Sources */,
+				09368A061D8F4468002F05D8 /* TradesTableViewController.swift in Sources */,
+				09B75FB41D777F9600958654 /* TradeGroup.swift in Sources */,
+				09368A1B1D8F987E002F05D8 /* TextbookResultViewModel.swift in Sources */,
+				092FF1511D88C2C800F673E8 /* TradeDetailHeaderTableViewCell.swift in Sources */,
+				09368A0B1D8F46E6002F05D8 /* MyBooksViewController.swift in Sources */,
+				09368A1D1D907AEF002F05D8 /* TextbookTableViewCellModel.swift in Sources */,
+				09368A231D90CC74002F05D8 /* TextbookConditionViewModel.swift in Sources */,
+				09368A271D91F800002F05D8 /* StoreRequestStatusType.swift in Sources */,
+				09B75FBA1D77810400958654 /* TextbookRequest.swift in Sources */,
+				09BA714A1D833E8100764944 /* XMSegmentedControl.swift in Sources */,
+				09B75FC81D77C19900958654 /* TradeTableViewCell.swift in Sources */,
+				09B75FB81D7780FB00958654 /* TextbookOffer.swift in Sources */,
+				09368A0D1D8F4706002F05D8 /* TextbookResultTableViewController.swift in Sources */,
+				09368A191D8F986D002F05D8 /* ISBNLookupViewModel.swift in Sources */,
+				09FF078B1D74250C003634AD /* RemoteStore.swift in Sources */,
+				09368A1F1D907D6A002F05D8 /* RACUtil.swift in Sources */,
+				09368A091D8F4499002F05D8 /* ISBNLookupTableViewController.swift in Sources */,
+				09FF07911D74D374003634AD /* LoginViewModel.swift in Sources */,
+				09FF07921D74D374003634AD /* SignUpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +621,14 @@
 				09FF074B1D6F7675003634AD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		09FF077A1D6F7B4B003634AD /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				09FF077B1D6F7B4B003634AD /* Base */,
+			);
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -399,9 +721,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Bookloop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CL.Bookloop;
+				PRODUCT_BUNDLE_IDENTIFIER = tierneyluckhardt.bookloop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -410,9 +736,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Bookloop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = CL.Bookloop;
+				PRODUCT_BUNDLE_IDENTIFIER = tierneyluckhardt.bookloop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -482,6 +812,7 @@
 				09FF07681D6F7675003634AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		09FF07691D6F7675003634AD /* Build configuration list for PBXNativeTarget "BookloopTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +821,7 @@
 				09FF076B1D6F7675003634AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		09FF076C1D6F7675003634AD /* Build configuration list for PBXNativeTarget "BookloopUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +830,7 @@
 				09FF076E1D6F7675003634AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
