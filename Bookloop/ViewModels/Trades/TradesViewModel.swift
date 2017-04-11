@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import ReactiveSwift
 import enum Result.NoError
 import Parse
 
@@ -21,10 +22,10 @@ class TradesViewModel: NSObject {
     let alertMessageSignal: Signal<AlertType, NoError>
     let isLoading = MutableProperty(false)
     
-    private var trades: [TradeGroup]
-    private let store = RemoteStore()
-    private let contentChangesObserver: Observer<(), NoError>
-    private let alertMessageObserver: Observer<AlertType, NoError>
+    fileprivate var trades: [TradeGroup]
+    fileprivate let store = RemoteStore()
+    fileprivate let contentChangesObserver: Observer<(), NoError>
+    fileprivate let alertMessageObserver: Observer<AlertType, NoError>
     
     override init() {
         self.trades = []
@@ -45,24 +46,24 @@ class TradesViewModel: NSObject {
         
         SignalProducer(signal: refreshSignal)
             .on(started: { [unowned self] _ in self.isLoading.value = true })
-            .flatMap(.Merge) {[unowned self] _ in
+            .flatMap(.merge) {[unowned self] _ in
                 return self.store.tradesForCurrentUser()
                     .collect()
                     .flatMapError { error in
-                        alertMessageObserver.sendNext(.Error(message: error.localizedDescription))
+                        alertMessageObserver.send(value: .error(message: error.localizedDescription))
                         return SignalProducer(value: [])
                     }
             }
-            .startWithNext { [unowned self] trades in
+            .startWithValues { [unowned self] trades in
                 self.isLoading.value = false
                 if trades.count > 0 {
                     self.trades = trades
-                    contentChangesObserver.sendNext()
+                    contentChangesObserver.send(value: ())
                 }
             }
     }
     
-    func numberOfTradesInSection(section: Int) -> Int {
+    func numberOfTradesInSection(_ section: Int) -> Int {
         return trades.count
     }
     
@@ -72,35 +73,35 @@ class TradesViewModel: NSObject {
         return "BALANCE: \(balance)"
     }
     
-    func userProfilePictureForRow(row: Int) -> UIImage {
+    func userProfilePictureForRow(_ row: Int) -> UIImage {
         return UIImage()
     }
     
-    func tradeSummaryForRow(row: Int) -> String {
+    func tradeSummaryForRow(_ row: Int) -> String {
         let trade = trades[row]
         return "\(trade.matches.count) books in trade"
     }
     
-    func tradeDetailsForRow(row: Int) -> String {
+    func tradeDetailsForRow(_ row: Int) -> String {
         let trade = trades[row]
         let dateString = DateFormatHelper().timeAgoSinceDate(trade.createdAt)
-        return "\(trade.withUser!.firstName) - \(dateString)"
+        return "\(trade.withUser.firstName) - \(dateString)"
     }
     
-    func tradePointCostForRow(row: Int) -> String {
+    func tradePointCostForRow(_ row: Int) -> String {
         let trade = trades[row]
         let cost = trade.pointCostForUser(store.currentUser()!)
         return priceStringFromInteger(cost)
     }
     
-    func tradeDetailViewModelForIndexPath(indexPath: NSIndexPath) -> TradeDetailViewModel {
+    func tradeDetailViewModelForIndexPath(_ indexPath: IndexPath) -> TradeDetailViewModel {
         let trade = trades[indexPath.row]
         let currentUser = store.currentUser()!
         return TradeDetailViewModel(trade: trade, currentUser: currentUser)
     }
     
     // Helper
-    func priceStringFromInteger(value: Int) -> String {
+    func priceStringFromInteger(_ value: Int) -> String {
         let dollars = value/100
         let cents = abs(value%100)
         return "\(dollars).\(cents)"

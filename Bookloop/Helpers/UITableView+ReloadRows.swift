@@ -9,7 +9,7 @@
 import UIKit
 
 extension UITableView {
-    func reloadRowsInSection(section: Int, oldRowCount: Int, newRowCount: Int) {
+    func reloadRowsInSection(_ section: Int, oldRowCount: Int, newRowCount: Int) {
         var oldRows: [Int] = []
         var newRows: [Int] = []
         
@@ -24,12 +24,12 @@ extension UITableView {
             newRows = Array(0...oldRowCount-1)
         }
     
-        let oldIndexPaths = oldRows.map { row in NSIndexPath(forRow: row, inSection: section) }
-        let newIndexPaths = newRows.map { row in NSIndexPath(forRow: row, inSection: section) }
+        let oldIndexPaths = oldRows.map { row in IndexPath(row: row, section: section) }
+        let newIndexPaths = newRows.map { row in IndexPath(row: row, section: section) }
             
         beginUpdates()
-        deleteRowsAtIndexPaths(oldIndexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
-        insertRowsAtIndexPaths(newIndexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
+        deleteRows(at: oldIndexPaths, with: UITableViewRowAnimation.automatic)
+        insertRows(at: newIndexPaths, with: UITableViewRowAnimation.automatic)
         endUpdates()
     }
 }

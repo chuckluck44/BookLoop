@@ -18,10 +18,10 @@ class TradeDetailHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.segmentedControl.segmentTitle = ["YOU GET", "YOU GIVE"]
-        self.segmentedControl.selectedItemHighlightStyle = XMSelectedItemHighlightStyle.BottomEdge
+        self.segmentedControl.selectedItemHighlightStyle = XMSelectedItemHighlightStyle.bottomEdge
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

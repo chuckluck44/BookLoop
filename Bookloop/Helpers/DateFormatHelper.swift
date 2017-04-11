@@ -9,50 +9,50 @@
 import Foundation
 
 class DateFormatHelper {
-    func timeAgoSinceDate(date:NSDate, numericDates:Bool=false) -> String {
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = [.Hour, .Day, .WeekOfYear, .Month, .Year, .Second]
-        let now = NSDate()
-        let earliest = now.earlierDate(date)
+    class func timeAgoSinceDate(_ date:Date, numericDates:Bool=false) -> String {
+        let calendar = Calendar.current
+        let unitFlags: NSCalendar.Unit = [.hour, .day, .weekOfYear, .month, .year, .second]
+        let now = Date()
+        let earliest = (now as NSDate).earlierDate(date)
         let latest = (earliest == now) ? date : now
-        let components:NSDateComponents = calendar.components(unitFlags, fromDate: earliest, toDate: latest, options: NSCalendarOptions(rawValue: 0))
+        let components:DateComponents = (calendar as NSCalendar).components(unitFlags, from: earliest, to: latest, options: NSCalendar.Options(rawValue: 0))
         
-        if (components.year >= 1){
-            let formatter = NSDateFormatter()
+        if (components.year! >= 1){
+            let formatter = DateFormatter()
             formatter.dateFormat = "MMMM d, yyyy"
-            return formatter.stringFromDate(date)
+            return formatter.string(from: date)
         }
-        else if (components.weekOfYear >= 1){
-            let formatter = NSDateFormatter()
+        else if (components.weekOfYear! >= 1){
+            let formatter = DateFormatter()
             formatter.dateFormat = "MMMM d"
-            return formatter.stringFromDate(date)
-        } else if (components.day >= 2) {
-            let formatter = NSDateFormatter()
+            return formatter.string(from: date)
+        } else if (components.day! >= 2) {
+            let formatter = DateFormatter()
             formatter.dateFormat = "EEEE"
-            return formatter.stringFromDate(date)
-        } else if (components.day >= 1){
+            return formatter.string(from: date)
+        } else if (components.day! >= 1){
             if (numericDates){
                 return "1 day ago"
             } else {
                 return "Yesterday"
             }
-        } else if (components.hour >= 2) {
+        } else if (components.hour! >= 2) {
             return "\(components.hour) hours ago"
-        } else if (components.hour >= 1){
+        } else if (components.hour! >= 1){
             if (numericDates){
                 return "1 hour ago"
             } else {
                 return "An hour ago"
             }
-        } else if (components.minute >= 2) {
+        } else if (components.minute! >= 2) {
             return "\(components.minute) minutes ago"
-        } else if (components.minute >= 1){
+        } else if (components.minute! >= 1){
             if (numericDates){
                 return "1 minute ago"
             } else {
                 return "A minute ago"
             }
-        } else if (components.second >= 3) {
+        } else if (components.second! >= 3) {
             return "\(components.second) seconds ago"
         } else {
             return "Just now"

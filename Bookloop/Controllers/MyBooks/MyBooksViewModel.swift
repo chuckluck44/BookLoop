@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-import ReactiveCocoa
+import ReactiveSwift
 import enum Result.NoError
 
 class MyBooksViewModel: NSObject {
@@ -28,18 +28,18 @@ class MyBooksViewModel: NSObject {
     let alertMessageSignal: Signal<AlertType, NoError>
     
     // Data Model
-    private var textbookRequests: [TextbookRequest]
-    private var textbookOffers: [TextbookOffer]
-    private var cellModels: [TextbookTableViewCellModel]
+    fileprivate var textbookRequests: [TextbookRequest]
+    fileprivate var textbookOffers: [TextbookOffer]
+    fileprivate var cellModels: [TextbookTableViewCellModel]
     
     // Store request status
-    private let store = RemoteStore()
-    private let requestFetchStatus: MutableProperty<StoreRequestStatusType> = MutableProperty(.None)
-    private let offerFetchStatus: MutableProperty<StoreRequestStatusType> = MutableProperty(.None)
+    fileprivate let store = RemoteStore()
+    fileprivate let requestFetchStatus: MutableProperty<StoreRequestStatusType> = MutableProperty(.none)
+    fileprivate let offerFetchStatus: MutableProperty<StoreRequestStatusType> = MutableProperty(.none)
     
     // Observers
-    private let contentChangesObserver: Observer<(), NoError>
-    private let alertMessageObserver: Observer<AlertType, NoError>
+    fileprivate let contentChangesObserver: Observer<(), NoError>
+    fileprivate let alertMessageObserver: Observer<AlertType, NoError>
     
     override init() {
         self.textbookRequests = []
@@ -64,15 +64,15 @@ class MyBooksViewModel: NSObject {
         
         // Fetch Textbook Requests
         SignalProducer(signal: refreshRequestsSignal)
-            .on(next: { [unowned self] _ in self.requestFetchStatus.value = .InProgress })
-            .flatMap(.Merge) {[unowned self] _ in
+            .on(next: { [unowned self] _ in self.requestFetchStatus.value = .inProgress })
+            .flatMap(.merge) {[unowned self] _ in
                 return self.store.textbookRequestsForCurrentUser()
                     .collect()
                     .flatMapError { error in
-                        self.requestFetchStatus.value = .Failed(error: error)
+                        self.requestFetchStatus.value = .failed(error: error)
                         return SignalProducer(value: [])
                     }
-                    .on(completed: { [unowned self] _ in self.requestFetchStatus.value = .Succeeded })
+                    .on(completed: { [unowned self] _ in self.requestFetchStatus.value = .succeeded })
             }
             .startWithNext { [unowned self] requests in
                 guard requests.count > 0 else { return }
@@ -83,15 +83,15 @@ class MyBooksViewModel: NSObject {
         
         // Fetch Textbook Offers
         SignalProducer(signal: refreshOffersSignal)
-            .on(next: { [unowned self] _ in self.offerFetchStatus.value = .InProgress })
-            .flatMap(.Merge) {[unowned self] _ in
+            .on(next: { [unowned self] _ in self.offerFetchStatus.value = .inProgress })
+            .flatMap(.merge) {[unowned self] _ in
                 return self.store.textbookOffersForCurrentUser()
                     .collect()
                     .flatMapError { error in
-                        self.offerFetchStatus.value = .Failed(error: error)
+                        self.offerFetchStatus.value = .failed(error: error)
                         return SignalProducer(value: [])
                     }
-                    .on(completed: { [unowned self] _ in self.offerFetchStatus.value = .Succeeded })
+                    .on(completed: { [unowned self] _ in self.offerFetchStatus.value = .succeeded })
             }
             .startWithNext { [unowned self] offers in
                 guard offers.count > 0 else { return }
@@ -125,7 +125,7 @@ class MyBooksViewModel: NSObject {
     func test () {
         let parseRequestObjects = self.textbookRequests.map { request in PFObject(withoutDataWithClassName: "TextbookRequest", objectId: request.id!) }
         let parseOfferObjects = self.textbookRequests.map { offer in PFObject(withoutDataWithClassName: "TextbookOffer", objectId: offer.id!) }
-        PFCloud.callFunctionInBackground("findMatchesForCurrentUser", withParameters: nil) {
+        PFCloud.callFunction(inBackground: "findMatchesForCurrentUser", withParameters: nil) {
             (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
                 print(error!.localizedDescription)
@@ -144,19 +144,19 @@ class MyBooksViewModel: NSObject {
         return cellModels.count
     }
     
-    func cellModelForRow(row: Int) -> TextbookTableViewCellModel {
+    func cellModelForRow(_ row: Int) -> TextbookTableViewCellModel {
         return cellModels[row]
     }
     
-    func deleteTextbookInRow(row: Int) {
+    func deleteTextbookInRow(_ row: Int) {
         if selectedIndex.value == 0 {
             store.deleteTextbookRequest(self.textbookRequests[row])
-            textbookRequests.removeAtIndex(row)
-            cellModels.removeAtIndex(row)
+            textbookRequests.remove(at: row)
+            cellModels.remove(at: row)
         } else {
             store.deleteTextbookOffer(self.textbookOffers[row])
-            textbookOffers.removeAtIndex(row)
-            cellModels.removeAtIndex(row)
+            textbookOffers.remove(at: row)
+            cellModels.remove(at: row)
         }
     }
     
@@ -178,16 +178,16 @@ class MyBooksViewModel: NSObject {
     
     // Helpers
     
-    func alertMapping(status: StoreRequestStatusType) -> AlertType {
+    func alertMapping(_ status: StoreRequestStatusType) -> AlertType {
         switch status {
-        case .InProgress:
-            return .Default
-        case let .Failed(error: error):
-            return .Error(message: error.localizedDescription)
-        case .Succeeded:
-            return .Dismiss
-        case .None:
-            return .Ignore
+        case .inProgress:
+            return .default
+        case let .failed(error: error):
+            return .error(message: error.localizedDescription)
+        case .succeeded:
+            return .dismiss
+        case .none:
+            return .ignore
         }
     }
 }

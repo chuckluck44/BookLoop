@@ -9,8 +9,11 @@
 import UIKit
 import Parse
 
-class Textbook: NSObject {
-    let id: String
+enum TextbookCondition: Int {
+    case likeNew = 0, great, good, poor
+}
+
+class Textbook: BLObject {
     let title: String
     let authors: [String]
     let ISBN: String
@@ -33,7 +36,7 @@ class Textbook: NSObject {
     }
     
     init(parseObject: PFObject) {
-        self.id = parseObject.objectId!
+        
         self.title = parseObject["title"] as! String
         self.authors = parseObject["authors"] as! [String]
         self.ISBN = parseObject["ISBN"] as! String
@@ -43,6 +46,11 @@ class Textbook: NSObject {
         self.formattedPrice = parseObject["formattedPrice"] as! String
         self.mediumImageURL = parseObject["mediumImageURL"] as! String
         self.smallImageURL = parseObject["smallImageURL"] as! String
+        
+        super.init()
+        
+        self.id = parseObject.objectId!
+        self.parseClassName = "Textbook"
     }
     
     func priceString() -> String {

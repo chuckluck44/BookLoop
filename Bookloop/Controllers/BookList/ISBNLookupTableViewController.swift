@@ -14,11 +14,12 @@ class ISBNLookupTableViewController: UITableViewController {
     @IBOutlet weak var ISBNTextField: UITextField!
     @IBOutlet weak var addTextbookButton: UIButton!
 
-    private var viewModel: ISBNLookupViewModel!
+    let store = RemoteStore()
+    
+    var requesting: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel()
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,48 +27,36 @@ class ISBNLookupTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setViewModel(viewModel: ISBNLookupViewModel) {
-        self.viewModel = viewModel
+    // MARK: - UI Handling
+    
+    @IBAction func handleAddTextbookButton(_ sender: Any) {
+        let isbn = self.ISBNTextField.text!
+        if isbn.characters.count != 10 && isbn.characters.count != 13 {
+            SVProgressHUD.showError(withStatus: "ISBN must be 10 or 13 digits long")
+            return
+        }
+        
+        SVProgressHUD.show()
+        store.getTextbook(withISBN: isbn, success: { textbook in
+            if textbook != nil {
+                self.performSegue(withIdentifier: "TextbookResultSegue", sender: textbook!)
+            } else {
+                SVProgressHUD.showError(withStatus: "No textbooks match this ISBN")
+            }
+        }, failure: { SVProgressHUD.showError(withStatus: $0.localizedDescription) })
     }
     
-    func bindViewModel() {
-        
-        // Text fields
-        self.viewModel.ISBN <~ self.ISBNTextField.rac_textSignal().toSignalProducer()
-            .ignoreError()
-            .map { text in text as! String }
-        
-        
-        // Login Action
-        self.addTextbookButton.rex_pressed.value = self.viewModel.textbookLookupAction.unsafeCocoaAction
-        
-        // Navigation
-        self.viewModel.textbookResult
-            .producer
-            .startWithNext { [weak self] textbook in
-                if textbook != nil {
-                    self!.performSegueWithIdentifier("TextbookResultSegue", sender: nil)
-                }
-            }
-        
-        // Progress alerts
-        self.viewModel.alertMessageSignal
-            .observeNext { type in
-                SVProgressHUD.show(type)
-        }
-    }
+    
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TextbookResultSegue" {
-            let destinationModel = viewModel.textbookResultViewModel()
-            let destinationController = segue.destinationViewController as! TextbookResultTableViewController
-            
-            destinationController.setViewModel(destinationModel)
+            let destinationController = segue.destination as! TextbookResultTableViewController
+            destinationController.layout(with: sender as! Textbook)
         }
     }
 
-    @IBAction func unwindToISBNLookup(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToISBNLookup(_ segue: UIStoryboardSegue) {}
 }

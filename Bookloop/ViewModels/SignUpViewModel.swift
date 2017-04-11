@@ -26,13 +26,13 @@ class SignUpViewModel: NSObject {
     // Actions
     lazy var signUpAction: Action<UIButton, Bool, NSError>! = { [unowned self] _ in
         return Action(enabledIf: self.infoIsValid, { _ in
-            self.alertMessageObserver.sendNext(.Status(message: "Logging in..."))
+            self.alertMessageObserver.sendNext(.status(message: "Logging in..."))
             return self.store.signUpWithEmailAndPassword(self.email.value, password: self.password.value)
         })
     }()
     
-    private let store = RemoteStore()
-    private let alertMessageObserver: Observer<AlertType, NoError>
+    fileprivate let store = RemoteStore()
+    fileprivate let alertMessageObserver: Observer<AlertType, NoError>
     
     override init() {
         
@@ -53,26 +53,26 @@ class SignUpViewModel: NSObject {
             .observe(alertMessageObserver)
         
         // Sign up successful
-        signUpAction.values.observeNext { _ in NSNotificationCenter.defaultCenter().postNotificationName(signUpSuccessfulNotification, object: nil) }
+        signUpAction.values.observeNext { _ in NotificationCenter.default.post(name: Notification.Name(rawValue: signUpSuccessfulNotification), object: nil) }
         isSignedUp <~ signUpAction.values
     }
     
-    func isValidEmail(email: String) -> Bool {
-        return email.rangeOfString("^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$", options: .RegularExpressionSearch) != nil
+    func isValidEmail(_ email: String) -> Bool {
+        return email.range(of: "^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$", options: .regularExpression) != nil
     }
     
-    func isValidPassword(password: String) -> Bool {
+    func isValidPassword(_ password: String) -> Bool {
         return password.characters.count > 5
     }
     
-    func messageAlertMapping(event: Event<Bool, NSError>) -> AlertType {
+    func messageAlertMapping(_ event: Event<Bool, NSError>) -> AlertType {
         switch event {
-        case let .Failed(error):
-            return .Error(message: error.localizedDescription)
-        case .Completed:
-            return .Success(message: "Sign up successful!")
+        case let .failed(error):
+            return .error(message: error.localizedDescription)
+        case .completed:
+            return .success(message: "Sign up successful!")
         default:
-            return .Ignore
+            return .ignore
         }
     }
 }

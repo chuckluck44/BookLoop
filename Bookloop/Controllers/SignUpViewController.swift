@@ -8,8 +8,12 @@
 
 import UIKit
 import ReactiveCocoa
-import Rex
+import ReactiveSwift
 import SVProgressHUD
+
+protocol SignUpViewControllerDelegate: class {
+    func signUpSuccessful()
+}
 
 class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -17,18 +21,13 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    let store = RemoteStore()
     
-    
-    var viewModel: SignUpViewModel
-
-    required init?(coder aDecoder: NSCoder) {
-        self.viewModel = SignUpViewModel()
-        super.init(coder: aDecoder)
-    }
+    weak var delegate: SignUpViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel()
+        self.bindUserInterface()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,33 +35,26 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func bindViewModel() {
+    func bindUserInterface() {
         
-        // Test fields
-        self.viewModel.email <~ self.emailTextField.rac_textSignal().toSignalProducer()
-            .ignoreError()
-            .map { $0 as! String }
-        self.viewModel.password <~ self.passwordTextField.rac_textSignal().toSignalProducer()
-            .ignoreError()
-            .map { $0 as! String }
+        // Text fields
+        let validEmailSignal = self.emailTextField.reactive.continuousTextValues.map { $0!.characters.count > 0 }
+        let validPasswordSignal = self.passwordTextField.reactive.continuousTextValues.map { $0!.characters.count > 0 }
         
-        // Sign Up Action
-        self.signUpButton.rex_pressed.value = self.viewModel.signUpAction.unsafeCocoaAction
-        
-        // Navigation
-        self.viewModel.isSignedUp
-            .producer
-            .startWithNext {[unowned self] in
-                if $0 {self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)}
-            }
-        
-        // Progress alerts
-        self.viewModel.alertMessageSignal
-            .observeNext { type in SVProgressHUD.show(type) }
+        let signUpButtonBinding: BindingTarget<Bool> = self.signUpButton.reactive.isEnabled
+        signUpButtonBinding <~ validEmailSignal.combineLatest(with: validPasswordSignal).map { $0 && $1 }
     }
     
-    @IBAction func handleCancelButton(sender: AnyObject) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func signUpButton(_ sender: Any) {
+        SVProgressHUD.show(withStatus: "Signing up...")
+        store.signUp(email: emailTextField.text!, password: passwordTextField.text!).then { _ -> Void in
+            SVProgressHUD.dismiss()
+            self.delegate?.signUpSuccessful()
+        }.catch { SVProgressHUD.showError(withStatus: $0.localizedDescription) }
+    }
+    
+    @IBAction func handleCancelButton(_ sender: AnyObject) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

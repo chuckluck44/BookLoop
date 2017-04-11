@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dAo-BN-iL9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dAo-BN-iL9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -32,10 +36,11 @@
                                     <constraint firstAttribute="height" constant="50" id="m7c-ao-fSJ"/>
                                 </constraints>
                                 <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="sYa-5i-Dmd" kind="presentation" id="KXt-nx-hek"/>
+                                    <action selector="handleSignUpButton:" destination="dAo-BN-iL9" eventType="touchUpInside" id="8lG-Nu-fy0"/>
+                                    <segue destination="sYa-5i-Dmd" kind="presentation" identifier="SignUpSegue" id="KXt-nx-hek"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8wG-uU-1oy">
@@ -50,8 +55,11 @@
                                     <constraint firstAttribute="height" constant="50" id="brg-oA-875"/>
                                 </constraints>
                                 <state key="normal" title="LOGIN">
-                                    <color key="titleColor" red="0.89126098155975342" green="0.3545563817024231" blue="0.39968371391296387" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.89126098155975342" green="0.3545563817024231" blue="0.39968371391296387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleLoginButton:" destination="dAo-BN-iL9" eventType="touchUpInside" id="swn-Jg-MuB"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="School email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="80r-l4-U2W">
                                 <rect key="frame" x="24" y="247" width="327" height="30"/>
@@ -62,7 +70,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.89126098155975342" green="0.3545563817024231" blue="0.39968371391296387" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.89126098155975342" green="0.3545563817024231" blue="0.39968371391296387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="veo-86-mF6" firstAttribute="leading" secondItem="uvm-St-iTL" secondAttribute="leadingMargin" constant="8" id="Brv-BT-hg6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="veo-86-mF6" secondAttribute="trailing" constant="8" id="Dww-04-wl8"/>
@@ -81,7 +89,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="8wG-uU-1oy" secondAttribute="trailing" constant="160" id="x6n-ty-2EE"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="emailTextField" destination="80r-l4-U2W" id="QhT-Dg-Fu8"/>
                         <outlet property="loginButton" destination="9TW-ye-MkF" id="BHT-3H-8sX"/>
@@ -126,8 +133,11 @@
                                     <constraint firstAttribute="height" constant="50" id="faS-pz-H65"/>
                                 </constraints>
                                 <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" red="0.8912609816" green="0.35455638169999998" blue="0.39968371390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.8912609816" green="0.35455638169999998" blue="0.39968371390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signUpButton:" destination="sYa-5i-Dmd" eventType="touchUpInside" id="zlW-k1-9Qr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxE-xi-lhK">
                                 <rect key="frame" x="24" y="381" width="327" height="50"/>
@@ -135,7 +145,7 @@
                                     <constraint firstAttribute="height" constant="50" id="uXs-8b-idE"/>
                                 </constraints>
                                 <state key="normal" title="CANCEL">
-                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="handleCancelButton:" destination="sYa-5i-Dmd" eventType="touchUpInside" id="2Rj-Ew-EAH"/>
@@ -158,7 +168,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.97595625830645383" green="0.98935461285704174" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.97595625830645383" green="0.98935461285704174" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JcJ-1G-olK" firstAttribute="top" secondItem="uTy-5E-o1O" secondAttribute="bottom" constant="8" id="DoV-8A-dRV"/>
                             <constraint firstItem="gp3-Ee-DA9" firstAttribute="top" secondItem="GB9-HD-tGI" secondAttribute="bottom" constant="29" id="DyV-AT-rwd"/>

@@ -1,7 +1,7 @@
 github "ParsePlatform/Parse-SDK-iOS-OSX"
-github "ReactiveCocoa/ReactiveCocoa"
-github "RACCommunity/Rex"
+github "ReactiveCocoa/ReactiveCocoa" "5.0.0-alpha.3"
 github "antitypical/Result"
 github "SVProgressHUD/SVProgressHUD"
-github "badoo/Chatto"
 github "dzenbot/DZNEmptyDataSet"
+github "mxcl/PromiseKit" ~> 4.0
+github "PromiseKit/UIKit" ~> 1.0

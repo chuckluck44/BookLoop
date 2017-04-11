@@ -9,16 +9,22 @@
 import UIKit
 import Parse
 
-class TextbookMatch: NSObject {
+class TextbookMatch: BLObject {
     var offer: TextbookOffer
     var request: TextbookRequest
+    var tradeGroupId: String?
     
     init(parseObject: PFObject) {
         self.offer = TextbookOffer(parseObject: parseObject["offer"] as! PFObject)
         self.request = TextbookRequest(parseObject: parseObject["request"] as! PFObject)
+        self.tradeGroupId = (parseObject["tradeGroup"] as? PFObject)?.objectId
+        
+        super.init()
+        
+        self.parseClassName = "TextbookMatch"
     }
     
-    func pointCostForUser(user: User) -> Int {
+    func pointCostForUser(_ user: User) -> Int {
         let price = offer.textbook.price
         if offer.user.id == user.id {
             return price

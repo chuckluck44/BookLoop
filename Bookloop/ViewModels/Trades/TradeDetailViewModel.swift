@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import ReactiveSwift
 import enum Result.NoError
 
 class TradeDetailViewModel: NSObject {
@@ -17,14 +18,14 @@ class TradeDetailViewModel: NSObject {
     let contentChangesSignal: Signal<(), NoError>
     let alertMessageSignal: Signal<AlertType, NoError>
     
-    private let trade: TradeGroup
-    private let currentUser: User
-    private let matchedRequests: [TextbookRequest]
-    private let matchedOffers: [TextbookOffer]
-    private var cellModels: [TextbookTableViewCellModel]
+    let trade: TradeGroup
+    fileprivate let currentUser: User
+    fileprivate let matchedRequests: [TextbookRequest]
+    fileprivate let matchedOffers: [TextbookOffer]
+    fileprivate var cellModels: [TextbookTableViewCellModel]
     
-    private let contentChangesObserver: Observer<(), NoError>
-    private let alertMessageObserver: Observer<AlertType, NoError>
+    fileprivate let contentChangesObserver: Observer<(), NoError>
+    fileprivate let alertMessageObserver: Observer<AlertType, NoError>
     
     init(trade: TradeGroup, currentUser: User) {
         self.trade = trade
@@ -45,13 +46,13 @@ class TradeDetailViewModel: NSObject {
         
         self.selectedIndex
             .producer
-            .startWithNext { [unowned self] index in
+            .startWithValues { [unowned self] index in
                 if index == 0 {
                     self.cellModels = self.matchedRequests.map { request in TextbookTableViewCellModel(textbook: request.textbook) }
                 } else {
                     self.cellModels = self.matchedOffers.map { offer in TextbookTableViewCellModel(textbook: offer.textbook) }
                 }
-                self.contentChangesObserver.sendNext()
+                self.contentChangesObserver.send(value: ())
             }
         
         
@@ -63,10 +64,10 @@ class TradeDetailViewModel: NSObject {
     }
     
     func otherUserName() -> String {
-        return trade.withUser!.firstName
+        return trade.withUser.firstName
     }
     
-    func numberOfRowsInSection(section: Int) -> Int {
+    func numberOfRowsInSection(_ section: Int) -> Int {
         return cellModels.count
     }
     
@@ -74,7 +75,7 @@ class TradeDetailViewModel: NSObject {
         return trade.priceStringForUser(RemoteStore().currentUser()!)
     }
     
-    func cellModelForRow(row: Int) -> TextbookTableViewCellModel {
+    func cellModelForRow(_ row: Int) -> TextbookTableViewCellModel {
         return cellModels[row]
     }
 }

@@ -9,24 +9,24 @@
 import Foundation
 
 enum StoreRequestStatusType {
-    case None
-    case InProgress
-    case Failed(error: NSError)
-    case Succeeded
+    case none
+    case inProgress
+    case failed(error: NSError)
+    case succeeded
 }
 
 func ==(lhs: StoreRequestStatusType, rhs: StoreRequestStatusType) -> Bool {
     switch (lhs, rhs) {
-    case (.InProgress, .InProgress):
+    case (.inProgress, .inProgress):
         return true
         
-    case (.None, .None):
+    case (.none, .none):
         return true
         
-    case (let .Failed(error1), let .Failed(error2)):
+    case (let .failed(error1), let .failed(error2)):
         return error1.localizedDescription == error2.localizedDescription
         
-    case (.Succeeded, .Succeeded):
+    case (.succeeded, .succeeded):
         return true
         
     default:

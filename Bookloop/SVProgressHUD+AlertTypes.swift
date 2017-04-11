@@ -10,44 +10,44 @@ import Foundation
 import SVProgressHUD
 
 enum AlertType {
-    case Default
-    case Status(message: String)
-    case Error(message: String)
-    case Success(message: String)
-    case Info(message: String)
-    case Dismiss
-    case Ignore
+    case `default`
+    case status(message: String)
+    case error(message: String)
+    case success(message: String)
+    case info(message: String)
+    case dismiss
+    case ignore
 }
  
 extension SVProgressHUD {
-    class func show(type: AlertType) {
+    class func show(_ type: AlertType) {
         switch type {
-        case .Default:
+        case .default:
             SVProgressHUD.show()
-        case let .Status(message):
-            SVProgressHUD.showWithStatus(message)
-        case let .Error(message):
-            SVProgressHUD.showErrorWithStatus(message)
-        case let .Success(message):
-            SVProgressHUD.showSuccessWithStatus(message)
-        case let .Info(message):
-            SVProgressHUD.showInfoWithStatus(message)
-        case .Dismiss:
+        case let .status(message):
+            SVProgressHUD.show(withStatus: message)
+        case let .error(message):
+            SVProgressHUD.showError(withStatus: message)
+        case let .success(message):
+            SVProgressHUD.showSuccess(withStatus: message)
+        case let .info(message):
+            SVProgressHUD.showInfo(withStatus: message)
+        case .dismiss:
             SVProgressHUD.dismiss()
-        case .Ignore:
+        case .ignore:
             return
         }
     }
     
-    class func showStoreRequestStatus(status: StoreRequestStatusType) {
+    class func showStoreRequestStatus(_ status: StoreRequestStatusType) {
         switch status {
-        case .InProgress:
+        case .inProgress:
             SVProgressHUD.show()
-        case let .Failed(error: error):
-            SVProgressHUD.showErrorWithStatus(error.localizedDescription)
-        case .Succeeded:
+        case let .failed(error: error):
+            SVProgressHUD.showError(withStatus: error.localizedDescription)
+        case .succeeded:
             SVProgressHUD.dismiss()
-        case .None:
+        case .none:
             return
         }
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import ReactiveSwift
 
 class TextbookTableViewCellModel: NSObject {
     let title: String
@@ -16,17 +17,17 @@ class TextbookTableViewCellModel: NSObject {
     
     let textbookImage: MutableProperty<UIImage?> = MutableProperty(nil)
     
-    private let textbookImageURL: String
+    fileprivate let textbookImageURL: String
     
     init(textbook: Textbook) {
         self.title = textbook.title
         self.authors = textbook.authorString
         self.price = textbook.formattedPrice
         self.textbookImageURL = textbook.mediumImageURL
-        
         textbookImage <~ RemoteStore().imageWithURL(textbookImageURL)
-            .on(failed: { print($0.localizedDescription) })
-            .ignoreError()
+            .on(failed: {error in
+                print(error.localizedDescription)
+            }).s
         
         super.init()
     }

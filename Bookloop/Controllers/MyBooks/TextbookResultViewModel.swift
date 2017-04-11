@@ -20,9 +20,9 @@ class TextbookResultViewModel: NSObject {
     
     let textbookImageSignal: SignalProducer<UIImage?, NSError>!
     
-    private let textbookImageURL: String
-    private let textbook: Textbook
-    private let requesting: Bool
+    fileprivate let textbookImageURL: String
+    fileprivate let textbook: Textbook
+    fileprivate let requesting: Bool
 
     init(textbook: Textbook, requesting: Bool) {
         self.textbook = textbook

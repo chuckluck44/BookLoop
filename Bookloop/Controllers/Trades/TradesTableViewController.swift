@@ -7,21 +7,28 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import Rex
+import DZNEmptyDataSet
 import SVProgressHUD
 
-class TradesTableViewController: UITableViewController {
+class TradesTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
-    private let viewModel = TradesViewModel()
+    var trades: [TradeGroup] = []
+    let store = RemoteStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel()
-        tableView.registerNib(UINib(nibName: "TradeTableViewCell", bundle: nil), forCellReuseIdentifier: "TradeTableViewCell")
+        
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
+        
+        tableView.register(UINib(nibName: "TradeTableViewCell", bundle: nil), forCellReuseIdentifier: "TradeTableViewCell")
         
         self.refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: #selector(handleRefreshControl), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(handleRefreshControl), for: UIControlEvents.valueChanged)
+        
+        refreshControl?.beginRefreshing()
+        loadTrades()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,80 +36,87 @@ class TradesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func bindViewModel() {
-        self.rex_viewWillAppear.observe(viewModel.refreshObserver)
-        
-        viewModel.contentChangesSignal
-            .observeOn(UIScheduler())
-            .observeNext { [unowned self] in self.tableView.reloadData() }
-        
-        viewModel.isLoading.producer
-            .observeOn(UIScheduler())
-            .startWithNext { [weak self] isLoading in
-                if !isLoading {
-                    self?.refreshControl?.endRefreshing()
-                }
-            }
-        
-        viewModel.alertMessageSignal
-            .observeNext { type in
-                SVProgressHUD.show(type)
-            }
-        
+    func handleRefreshControl() {
+        loadTrades()
     }
     
-    func handleRefreshControl() {
-        viewModel.refreshObserver.sendNext()
+    // MARK: - Remote Store
+    
+    func loadTrades() {
+        store.getTradesForCurrentUser().then { result -> Void in
+            self.refreshControl?.endRefreshing()
+            self.trades = result 
+            self.tableView.reloadData()
+        }.catch { SVProgressHUD.showError(withStatus: $0.localizedDescription) }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : viewModel.numberOfTradesInSection(section)
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return section == 0 ? 1 : trades.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("BalanceTableViewCell", forIndexPath: indexPath) as! BalanceTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceTableViewCell", for: indexPath) as! BalanceTableViewCell
             
-            cell.userBalanceLabel.text = viewModel.userBalanceString()
+            cell.userBalanceLabel.text = userBalanceString()
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TradeTableViewCell", forIndexPath: indexPath) as! TradeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TradeTableViewCell", for: indexPath) as! TradeTableViewCell
             
-            cell.tradeSummaryLabel.text = viewModel.tradeSummaryForRow(indexPath.row)
-            cell.tradeDetailsLabel.text = viewModel.tradeDetailsForRow(indexPath.row)
-            cell.pointsLabel.text = viewModel.tradePointCostForRow(indexPath.row)
+            cell.layout(with: trades[indexPath.row])
             
             return cell
         }
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 40
+            return 0
         } else {
             return 76.5
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("TradeDetailSegue", sender: indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "TradeDetailSegue", sender: trades[indexPath.row])
+    }
+    
+    // MARK: - Empty table view data source
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0), NSForegroundColorAttributeName: UIColor.darkGray]
+        
+        return NSAttributedString(string: "No Swaps Available", attributes: attributes)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12.0), NSForegroundColorAttributeName: UIColor.darkGray]
+        
+        return NSAttributedString(string: "Swaps will appear here when you are matched", attributes: attributes)
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TradeDetailSegue" {
-            let tradeDetailViewModel = viewModel.tradeDetailViewModelForIndexPath(sender as! NSIndexPath)
-            let destinationViewControlller = segue.destinationViewController as! TradeDetailViewController
-            destinationViewControlller.setViewModel(tradeDetailViewModel)
-            destinationViewControlller.bindViewModel()
+            let destinationViewControlller = segue.destination as! TradeDetailViewController
+            destinationViewControlller.layout(with: sender as! TradeGroup)
         }
     }
+    
+    // MARK: - Formatters
+    
+    func userBalanceString() -> String {
+        let balance = 0.0
+        return "BALANCE: \(balance)"
+    }
+    
+    
 }

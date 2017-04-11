@@ -9,9 +9,7 @@
 import UIKit
 import Parse
 
-class User: NSObject    {
-    var id: String
-    var createdAt: NSDate
+class User: BLObject   {
     var firstName: String
     var lastName: String
     var email: String
@@ -19,13 +17,16 @@ class User: NSObject    {
     var balance: String
     
     init(parseUser: PFUser) {
-        self.id = parseUser.objectId!
-        self.createdAt = parseUser.createdAt!
         self.firstName = parseUser["firstName"] as! String
         self.lastName = parseUser["lastName"] as! String
         self.email = parseUser["email"] as! String
         self.emailVerified = parseUser["emailVerified"] as? Bool
         self.balance = "0.00"
         
+        super.init()
+        
+        self.id = parseUser.objectId!
+        self.createdAt = parseUser.createdAt!
+        self.parseClassName = "_User"
     }
 }

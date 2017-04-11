@@ -18,13 +18,13 @@ class ISBNLookupViewModel: NSObject {
     
     let alertMessageSignal: Signal<AlertType, NoError>
     
-    private let store = RemoteStore()
-    private let alertMessageObserver: Observer<AlertType, NoError>
-    private let requesting: Bool
+    fileprivate let store = RemoteStore()
+    fileprivate let alertMessageObserver: Observer<AlertType, NoError>
+    fileprivate let requesting: Bool
     
     lazy var textbookLookupAction: Action<UIButton, Textbook?, NSError>! = { [unowned self] _ in
         return Action(enabledIf: self.ISBNIsValid, { _ in
-            self.alertMessageObserver.sendNext(.Default)
+            self.alertMessageObserver.sendNext(.default)
             return self.store.textbookWithISBN(self.ISBN.value)
         })
     }()
@@ -51,18 +51,18 @@ class ISBNLookupViewModel: NSObject {
             .observe(alertMessageObserver)
     }
     
-    func messageAlertMapping(event: Event<Textbook?, NSError>) -> AlertType {
+    func messageAlertMapping(_ event: Event<Textbook?, NSError>) -> AlertType {
         switch event {
-        case let .Failed(error):
-            return (.Error(message: error.localizedDescription))
-        case let .Next(textbook):
+        case let .failed(error):
+            return (.error(message: error.localizedDescription))
+        case let .next(textbook):
             if textbook != nil {
-                return (.Dismiss)
+                return (.dismiss)
             } else {
-                return (.Error(message: "Couldn't find textbook matching ISBN"))
+                return (.error(message: "Couldn't find textbook matching ISBN"))
             }
         default:
-            return (.Ignore)
+            return (.ignore)
         }
     }
     

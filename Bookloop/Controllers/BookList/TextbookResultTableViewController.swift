@@ -17,45 +17,35 @@ class TextbookResultTableViewController: UITableViewController {
     @IBOutlet weak var ISBN13Label: UILabel!
     @IBOutlet weak var ISBN10Label: UILabel!
 
-    private var viewModel: TextbookResultViewModel!
+    private var textbook: Textbook?
+    var requesting: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func setViewModel(viewModel: TextbookResultViewModel) {
-        self.viewModel = viewModel
-    }
-    
-    func bindViewModel() {
+    func layout(with textbook: Textbook) {
+        self.textbook = textbook
+        self.titleLabel.text = textbook.title
+        self.authorsLabel.text = textbook.authorString
+        self.editionLabel.text = textbook.edition
+        self.ISBN10Label.text = textbook.ISBN
+        self.ISBN13Label.text = textbook.EAN
         
-        self.titleLabel.text = viewModel.title
-        self.authorsLabel.text = viewModel.authors
-        self.editionLabel.text = viewModel.edition
-        self.ISBN10Label.text = viewModel.ISBN10
-        self.ISBN13Label.text = viewModel.ISBN13
-        
-        viewModel.textbookImageSignal
-            .ignoreError()
-            .filter { $0 != nil }
-            .startWithNext { [unowned self] image in
-                self.frontCoverImageView.image = image
-                self.tableView.reloadData()
-            }
+        self.frontCoverImageView.downloadAsync(fromURL: textbook.mediumImageURL)
     }
 
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TextbookConditionSegue" {
-            let destinationModel = viewModel.textbookConditionViewModel()
-            let destinationController = segue.destinationViewController as! TextbookConditionTableViewController
-            destinationController.setViewModel(destinationModel)
+            let destinationController = segue.destination as! TextbookConditionTableViewController
+            destinationController.textbook = self.textbook
+            destinationController.requesting = self.requesting
         }
     }
 

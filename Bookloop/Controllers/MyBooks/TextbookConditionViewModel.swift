@@ -13,18 +13,18 @@ import enum Result.NoError
 class TextbookConditionViewModel: NSObject {
 
     // Input
-    private let requesting: Bool
-    private let textbook: Textbook
+    fileprivate let requesting: Bool
+    fileprivate let textbook: Textbook
     
     // Output
     var condition: Int
     
     
-    private let store = RemoteStore()
+    fileprivate let store = RemoteStore()
     
     // Alerts
     let alertMessageSignal: Signal<AlertType, NoError>
-    private let alertMessageObserver: Observer<AlertType, NoError>
+    fileprivate let alertMessageObserver: Observer<AlertType, NoError>
     
     // Actions
     lazy var addTextbookAction: Action<UIBarButtonItem, Void, NSError> = { [unowned self] _ in
@@ -32,16 +32,16 @@ class TextbookConditionViewModel: NSObject {
         else { return self.offerTextbookAction }
     }()
     
-    private lazy var requestTextbookAction: Action<UIBarButtonItem, Void, NSError>! = { [unowned self] _ in
+    fileprivate lazy var requestTextbookAction: Action<UIBarButtonItem, Void, NSError>! = { [unowned self] _ in
         return Action { _ in
-            self.alertMessageObserver.sendNext(.Default)
+            self.alertMessageObserver.sendNext(.default)
             return self.store.createTextbookRequest(self.textbook, condition: self.condition)
         }
     }()
     
-    private lazy var offerTextbookAction: Action<UIBarButtonItem, Void, NSError>! = { [unowned self] _ in
+    fileprivate lazy var offerTextbookAction: Action<UIBarButtonItem, Void, NSError>! = { [unowned self] _ in
         return Action { _ in
-            self.alertMessageObserver.sendNext(.Default)
+            self.alertMessageObserver.sendNext(.default)
             return self.store.createTextbookOffer(self.textbook, condition: self.condition)
         }
     }()
@@ -62,14 +62,14 @@ class TextbookConditionViewModel: NSObject {
             .observe(alertMessageObserver)
     }
     
-    func messageAlertMapping(event: Event<Void, NSError>) -> AlertType {
+    func messageAlertMapping(_ event: Event<Void, NSError>) -> AlertType {
         switch event {
-        case let .Failed(error):
-            return .Error(message: error.localizedDescription)
-        case .Completed:
-            return .Success(message: "Successfully added book")
+        case let .failed(error):
+            return .error(message: error.localizedDescription)
+        case .completed:
+            return .success(message: "Successfully added book")
         default:
-            return .Ignore
+            return .ignore
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import ReactiveSwift
 import enum Result.NoError
 
 let signUpSuccessfulNotification = "k_signup_successful"
@@ -27,13 +28,13 @@ class LoginViewModel: NSObject {
     // Actions
     lazy var loginAction: Action<UIButton, Bool, NSError>! = { [unowned self] _ in
         return Action(enabledIf: self.infoIsValid, { _ in
-            self.alertMessageObserver.sendNext(.Status(message: "Logging in..."))
+            self.alertMessageObserver.send(value: .status(message: "Logging in..."))
             return self.store.loginWithEmailAndPassword("user@co.edu", password: "password")
         })
     }()
     
-    private let store = RemoteStore()
-    private let alertMessageObserver: Observer<AlertType, NoError>
+    fileprivate let store = RemoteStore()
+    fileprivate let alertMessageObserver: Observer<AlertType, NoError>
     
     override init() {
         
@@ -51,7 +52,7 @@ class LoginViewModel: NSObject {
         // Log in success
         isLoggedIn <~ loginAction.values
         
-        let waitingForEmailVerificationSignal  = NSNotificationCenter.defaultCenter()
+        let waitingForEmailVerificationSignal  = NotificationCenter.default
             .rac_notifications(signUpSuccessfulNotification, object: nil)
             .ignoreError()
         waitingForEmailVerification <~ waitingForEmailVerificationSignal.map { _ in true }
@@ -62,18 +63,18 @@ class LoginViewModel: NSObject {
             .observe(alertMessageObserver)
         
         waitingForEmailVerificationSignal
-            .map {_ -> AlertType in .Info(message: "Please validate your email") }
+            .map {_ -> AlertType in .info(message: "Please validate your email") }
             .start(alertMessageObserver)
     }
     
-    func messageAlertMapping(event: Event<Bool, NSError>) -> AlertType {
+    func messageAlertMapping(_ event: Event<Bool, NSError>) -> AlertType {
         switch event {
-        case let .Failed(error):
-            return .Error(message: error.localizedDescription)
-        case .Completed:
-            return .Dismiss
+        case let .failed(error):
+            return .error(message: error.localizedDescription)
+        case .completed:
+            return .dismiss
         default:
-            return .Ignore
+            return .ignore
         }
     }
 }
